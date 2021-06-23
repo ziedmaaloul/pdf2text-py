@@ -1,22 +1,16 @@
 import sys, getopt, argparse
-import pdftotext
+import pdfplumber
+import os
 parser = argparse.ArgumentParser()
 parser.add_argument('--inputFile', type=str)
 parser.add_argument('--outputFolder', type=str)
 args = parser.parse_args()
 inputfile = args.inputFile
 outputfile = args.outputFolder
-#output = outputfile + "/data.json" 
-# Load your PDF
-with open(inputfile, "rb") as f:
-    pdf = pdftotext.PDF(f)
-
-
-
-# Read some individual pages
-output = open(outputfile+"/test.txt", "w")
-
-#with open(output, 'w') as ofile:
-for p in pdf:
-    print(p)
-    #ofile.writelines(str(p))
+pdf = pdfplumber.open(inputfile)
+page = pdf.pages[0]
+text = page.extract_text()
+pdf.close()
+text_file = open(outputfile+"/data.txt", "w")
+n = text_file.write(text)
+text_file.close()
