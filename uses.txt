@@ -1,5 +1,0 @@
-docker build -t maaloulmz/pdf2text -f Dockerfile .
-docker run -it --rm -v /Users/zma/pdf2text-py/folder:/output/folder -v /Users/zma/pdf2text-py/orig/220.pdf:/input/220.pdf maaloulmz/pdf2text sh /input/script.sh /input/220.pdf /output/folder
-
-docker build -t maaloulmz/pdf2text -f Dockerfile . && docker run -it --rm -v /Users/zma/pdf2text-py/folder:/output/folder -v /Users/zma/pdf2text-py/orig/220.pdf:/input/220.pdf maaloulmz/pdf2text sh /input/script.sh /input/220.pdf /output/folder
-
